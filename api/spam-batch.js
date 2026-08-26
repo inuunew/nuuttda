@@ -1,7 +1,7 @@
-const axios = require('axios');
-const { randomUUID, randomInt } = require('crypto');
+import axios from 'axios';
+import { randomUUID, randomInt } from 'crypto';
 
-// --- HELPERS (sama) ---
+// --- HELPERS ---
 const USER_AGENTS = [
   'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36',
   'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36',
@@ -129,8 +129,8 @@ async function sendRequest(endpoint) {
   }
 }
 
-// --- MAIN HANDLER ---
-module.exports = async (req, res) => {
+// --- HANDLER ESM ---
+export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
   const { phone, batch } = req.body;
@@ -162,4 +162,4 @@ module.exports = async (req, res) => {
     failed,
     elapsed: `${elapsed}s`
   });
-};
+}
