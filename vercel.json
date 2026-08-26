@@ -1,0 +1,10 @@
+{
+  "buildCommand": "vite build",
+  "outputDirectory": "dist",
+  "functions": {
+    "api/spam-batch.js": {
+      "memory": 512,
+      "maxDuration": 60
+    }
+  }
+}
